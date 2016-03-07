@@ -1859,6 +1859,8 @@ Runner.prototype = {
 
     window.addEventListener(Runner.events.FOCUS,
           this.onVisibilityChange.bind(this));
+
+    window.code = 0;
   },
 
   clearCanvas: function() {
@@ -2153,6 +2155,8 @@ Runner.prototype = {
       this.horizon.reset();
       this.tRex.reset();
       this.playSound(this.soundFx.BUTTON_PRESS);
+
+      window.code = 0;
 
       this.update();
     }
@@ -2566,7 +2570,7 @@ function Obstacle(canvasCtx, type, spriteImgPos, dimensions,
   this.currentFrame = 0;
   this.timer = 0;
 
-  this.init(speed);
+  this.init(speed, window.code++);
 };
 
 /**
@@ -2587,7 +2591,8 @@ Obstacle.prototype = {
    * Initialise the DOM for the obstacle.
    * @param {number} speed
    */
-  init: function(speed) {
+  init: function(speed, text) {
+    this.text = text;
     this.cloneCollisionBoxes();
 
     // Only allow sizing if we're at the right speed.
@@ -2658,6 +2663,9 @@ Obstacle.prototype = {
       sourceWidth * this.size, sourceHeight,
       this.xPos, this.yPos,
       this.typeConfig.width * this.size, this.typeConfig.height);
+      this.canvasCtx.font = 'bold 20px Courier New';
+      this.canvasCtx.fillStyle = '#646464';
+      this.canvasCtx.fillText(this.text, this.xPos + this.width * 1.2, this.yPos + this.typeConfig.height / 3);
   },
 
   /**
