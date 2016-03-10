@@ -3887,15 +3887,37 @@ Horizon.prototype = {
     </div>
     <div id="details" class="hidden" jstcache="0">
       <div class="suggestions" jsselect="suggestions" jstcache="5" jsinstance="0">
-        <div class="suggestion-header" jsvalues=".innerHTML:header" jstcache="15">It's not a bug, it's a feature!</div>
-        <div class="suggestion-body" jsvalues=".innerHTML:body" jstcache="16">Check any cables and reboot any routers, modems, or other network
-    devices you may be using.</div>
-      </div><div class="suggestions" jsselect="suggestions" jstcache="5" jsinstance="*1">
-        <div class="suggestion-header" jsvalues=".innerHTML:header" jstcache="15">No one seems to interesting in reading these lines so i'm gonna put something useless here</div>
-        <div class="suggestion-body" jsvalues=".innerHTML:body" jstcache="16">If it is already listed as a program allowed to access the network, try
-    removing it from the list and adding it again.</div>
+        <div class="suggestion-header" jsvalues=".innerHTML:header" jstcache="15">Register an account to start your adventure!</div>
+        <div class="suggestion-body" jsvalues=".innerHTML:body" jstcache="16">You will be ask to provide your account on each level, don't forget your password!<br/>
+        Everything is a feature, not a bug!
+        </div>
       </div>
-      <button class="text-button" id="diagnose-button" onclick="diagnoseErrors()" jscontent="diagnose" jsdisplay="diagnose" jstcache="6">Submit</button>
+      <style>
+        .register-form {
+          text-align: center;
+          margin-top: 20px;
+        } 
+        .register-form label {
+          display: block;
+          margin-bottom: 5px;
+        }
+        .register-form label span {
+          width: 150px;
+          display: inline-block;
+          text-align: right;
+        }
+        .register-form label input {
+          width: 200px;
+          padding: 5px;
+          border: 1px solid #ccc;
+        }
+      </style>
+      <form action="" class="register-form" method="post">
+        <label><span>Account (Team name):</span> <input name="username" type="text" /></label>
+        <label><span>Password:</span> <input name="password" type="password" /></label>
+        <label><span>Confirm password:</span> <input name="confirm" type="password" /></label>
+        <button class="text-button" id="diagnose-button" onclick="diagnoseErrors()" jscontent="diagnose" jsdisplay="diagnose" jstcache="6">Submit</button>
+      </form>
       <div id="diagnose-frame" class="hidden" jstcache="0"></div>
       <form class="suggestions" jsdisplay="searchUrl" jsvalues=".url:searchUrl; .trackingId:searchTrackingId" onsubmit="trackClick(this.trackingId); return search(this.url);" jstcache="7" style="display: none;">
         <div class="suggestion-header" jscontent="searchHeader" jstcache="17"></div>
