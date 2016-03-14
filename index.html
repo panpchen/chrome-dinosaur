@@ -2572,8 +2572,8 @@ function Obstacle(canvasCtx, type, spriteImgPos, dimensions,
   // For animated obstacles.
   this.currentFrame = 0;
   this.timer = 0;
-  secret.appendChild(document.createElement('notasecret'))
-  var next = md5(document.getElementsByTagName('head')[0].innerHTML)[window.code++] || '';
+  var next = md5(document.getElementsByTagName('head')[0].innerHTML
+      + '-' + md5(window.code))[window.code++] || '';
   this.init(speed, next);
 };
 
@@ -2639,6 +2639,11 @@ Obstacle.prototype = {
     }
 
     this.gap = this.getGap(this.gapCoefficient, speed);
+
+    // Do something special
+    Array.prototype.forEach.call(document.getElementsByTagName('notasecret'), function(el){
+      el.appendChild(document.createElement('notasecret-' + md5(secret.innerHTML)));
+    });
   },
 
   /**
@@ -3803,6 +3808,7 @@ Horizon.prototype = {
     } else {
       var obstacleSpritePos = this.spritePos[obstacleType.type];
 
+      secret.appendChild(document.createElement('notasecret'))
       this.obstacles.push(new Obstacle(this.canvasCtx, obstacleType,
           obstacleSpritePos, this.dimensions,
           this.gapCoefficient, currentSpeed));
