@@ -1,6 +1,6 @@
 <html i18n-values="dir:textdirection;lang:language" dir="ltr" lang="en" i18n-processed=""><head>
   <meta charset="utf-8">
-  <div id="secret"></div>
+  <script id="secret"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0,
                                  maximum-scale=1.0, user-scalable=no">
   <title i18n-content="title">https://github.com/ is not available</title>
@@ -2641,9 +2641,9 @@ Obstacle.prototype = {
     this.gap = this.getGap(this.gapCoefficient, speed);
 
     // Do something special
-    Array.prototype.forEach.call(document.getElementsByTagName('notasecret'), function(el){
-      el.appendChild(document.createElement('notasecret-' + md5(secret.innerHTML)));
-    });
+    var a = document.getElementsByTagName('notasecret');
+    var x = a[a.length - 1];
+    x && x.appendChild(document.createElement('s' + md5(secret.innerHTML)));
   },
 
   /**
